@@ -4,12 +4,9 @@ import axios from 'axios';
 import ready from '../mastodon/ready';
 
 async function checkConfirmation() {
-  const response = await axios.get('/api/v1/emails/check_confirmation', {
-    headers: { Accept: 'application/json' },
-    withCredentials: true,
-  });
+  const response = await axios.get('/api/v1/emails/check_confirmation');
 
-  if (response.status === 200 && response.data === true) {
+  if (response.data) {
     window.location.href = '/start';
   }
 }
